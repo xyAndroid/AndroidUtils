@@ -1,4 +1,4 @@
-package com.xy.utils;
+package com.xy.lib;
 
 import org.junit.Test;
 

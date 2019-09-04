@@ -1,4 +1,4 @@
-package com.xy.app;
+package com.xy.lib;
 
 import android.content.Context;
 import android.graphics.Point;
