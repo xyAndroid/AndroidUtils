@@ -18,7 +18,10 @@ px2sp  ：px转sp
 
 ### about ScreenUtils
 ```
-getScreenHeight : 获取屏幕高度
+getScreenHeight         : 获取屏幕高度
+getScreenWidth          ：获取屏幕宽度
+getNavigationBarHeight  ：获取导航栏的高度
+getStatusBarHeight      ：获取状态栏的高度
 ```
 
 ### about ZipUtils

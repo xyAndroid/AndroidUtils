@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fl_float"
+    android:background="@drawable/bg_circle">
+
+    <TextView
+        android:id="@+id/tv_float"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="41dp"
+        android:drawablePadding="4dp"
+        android:drawableTop="@drawable/uilib_ic_float_voice_shutdown"
+        android:text="关闭语音播报"
+        android:textSize="14sp"
+        />
+
+</FrameLayout>
