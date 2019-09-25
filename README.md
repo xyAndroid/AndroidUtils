@@ -28,3 +28,6 @@ getStatusBarHeight      ：获取状态栏的高度
 ```
 unZip  ：解压
 ```
+
+### [about floatWindow](https://github.com/yhaolpz/FloatWindow)
+
