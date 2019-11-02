@@ -1,4 +1,4 @@
-package com.xy.lib;
+package com.xy.lib.utils;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;

@@ -13,8 +13,8 @@ import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.widget.TextView;
 
-import com.xy.lib.ConvertUtils;
-import com.xy.lib.ScreenUtils;
+import com.xy.lib.utils.ConvertUtils;
+import com.xy.lib.utils.ScreenUtils;
 import com.yhao.floatwindow.FloatWindow;
 import com.yhao.floatwindow.IFloatWindow;
 import com.yhao.floatwindow.MoveType;

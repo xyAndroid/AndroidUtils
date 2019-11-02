@@ -15,7 +15,7 @@
  * along with Siebe Projects samples.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.xy.lib;
+package com.xy.lib.utils;
 
 import android.app.Activity;
 import android.content.res.Configuration;

@@ -1,5 +1,5 @@
 # AndroidUtils
-安卓工具集合
+## 安卓工具集合
 
 
 ### about KeyboardUtils
@@ -30,4 +30,15 @@ unZip  ：解压
 ```
 
 ### [about floatWindow](https://github.com/yhaolpz/FloatWindow)
+
+
+## 自定义View
+
+### MarqueeTextView [自定义跑马灯](https://github.com/xiaweizi/MarqueeTextView)
+```
+startScroll   ：开始滚动
+resumeScroll  ：继续滚动
+pauseScroll   ：暂停滚动
+stopScroll    ：停止滚动并回到最初位置
+```
 
