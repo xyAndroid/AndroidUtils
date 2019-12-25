@@ -18,6 +18,7 @@
 package com.xy.lib.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
@@ -158,17 +159,12 @@ public class KeyboardHeightProvider extends PopupWindow {
      * from the activity window height.
      */
     private void handleOnGlobalLayout() {
-        int screenHeight = ScreenUtils.getScreenHeight(activity);
-
-        Rect rect = new Rect();
-        popupView.getWindowVisibleDisplayFrame(rect);
-
         // REMIND, you may like to change this using the fullscreen size of the phone
         // and also using the status bar and navigation bar heights of the phone to calculate
         // the keyboard height. But this worked fine on a Nexus.
         int orientation = getScreenOrientation();
 
-        int keyboardHeight = screenHeight - rect.bottom;
+        int keyboardHeight = getKeyboardHeight();
 
         if (keyboardHeight == 0) {
             notifyKeyboardHeightChanged(0, orientation);
@@ -190,18 +186,33 @@ public class KeyboardHeightProvider extends PopupWindow {
         }
     }
 
-//    public int getKeyBoardHeight(){
-//        int screenHeight;
-//        if(ScreenUtils.checkNavigationBarShow(activity)){
-//            screenHeight = ScreenUtils.getRealHeightNotContainNavigationBar(activity);
-//        }else{
-//            screenHeight = ScreenUtils.getScreenHeight(activity);
-//        }
-//
-//        Rect rect = new Rect();
-//        popupView.getWindowVisibleDisplayFrame(rect);
-//        return screenHeight - rect.bottom;
-//    }
+    private int getScreenHeight(Context context) {
+        int realHeight = ScreenUtils.getRealHeight(context);
+
+        if (realHeight == ScreenUtils.getScreenHeight(context) + ScreenUtils.getNavigationBarHeight(context)) {
+            return NavigationBarUtils.hasNavigationBarCompat(context) ? ScreenUtils.getScreenHeight(context) : ScreenUtils.getScreenHeight(context) + ScreenUtils.getNavigationBarHeight(context);
+        } else if (realHeight == ScreenUtils.getScreenHeight(context) + ScreenUtils.getNavigationBarHeight(context) + ScreenUtils.getStatusBarHeight(context)) {
+            return NavigationBarUtils.hasNavigationBarCompat(context) ? ScreenUtils.getScreenHeight(context) + ScreenUtils.getStatusBarHeight(context) : ScreenUtils.getScreenHeight(context) + ScreenUtils.getNavigationBarHeight(context) + ScreenUtils.getStatusBarHeight(context);
+        } else if (realHeight == ScreenUtils.getScreenHeight(context)) {
+            return NavigationBarUtils.hasNavigationBarCompat(context) ? ScreenUtils.getScreenHeight(context) - ScreenUtils.getNavigationBarHeight(context) : ScreenUtils.getScreenHeight(context);
+        } else if(realHeight == ScreenUtils.getRealHeightNotContainNavigationBar((Activity) context) + ScreenUtils.getNavigationBarHeight(context)){
+            return  NavigationBarUtils.hasNavigationBarCompat(context) ? ScreenUtils.getRealHeightNotContainNavigationBar((Activity) context) : realHeight;
+        } else {
+            return realHeight;
+        }
+    }
+
+    private int getKeyboardHeight(){
+        int screenHeight = getScreenHeight(activity);
+        Rect rect = new Rect();
+        popupView.getWindowVisibleDisplayFrame(rect);
+        int keyboardHeight = screenHeight - rect.bottom;
+
+        if (!NavigationBarUtils.hasNavigationBarCompat(activity)){
+            keyboardHeight -= NavigationBarUtils.getNavigationBarGestureTipHeight(activity);
+        }
+        return keyboardHeight;
+    }
 
 
     /**

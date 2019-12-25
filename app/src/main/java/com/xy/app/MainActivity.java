@@ -5,9 +5,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.xy.lib.utils.ScreenUtils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnOpenFloat;
+    private TextView tvScreenInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +22,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void initView(){
+        tvScreenInfo = findViewById(R.id.tv_screen_info);
         btnOpenFloat = findViewById(R.id.btn_open_float);
         btnOpenFloat.setOnClickListener(this);
+
+        tvScreenInfo.setText(ScreenUtils.getScreenInfo(this));
     }
 
     @Override
