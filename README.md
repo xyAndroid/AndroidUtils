@@ -44,6 +44,23 @@ getNavigationBarGestureTipHeightCompactSumsung     ：获取三星手机手势�
 unZip  ：解压
 ```
 
+### about FileUtils
+```
+saveBitmapToLocal ：将Bitmap保存到本地
+```
+
+### about Md5Utils
+```
+getMD5 ：获取MD5值(大写)
+getmd5 ：获取MD5值(小写)
+```
+### about StringUtils
+```
+isEmpty    ：判断字符串是否为空
+isNotEmpty ：判断字符串是否为空
+isNumeric  ：判断字符串是否是数字
+```
+
 ### [about floatWindow](https://github.com/yhaolpz/FloatWindow)
 
 
@@ -56,4 +73,5 @@ resumeScroll  ：继续滚动
 pauseScroll   ：暂停滚动
 stopScroll    ：停止滚动并回到最初位置
 ```
+
 
