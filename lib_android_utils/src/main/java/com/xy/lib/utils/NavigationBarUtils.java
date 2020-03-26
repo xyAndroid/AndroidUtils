@@ -3,6 +3,7 @@ package com.xy.lib.utils;
 import android.content.Context;
 import android.content.res.Resources;
 import android.provider.Settings;
+import android.text.TextUtils;
 
 
 /**
@@ -93,6 +94,9 @@ public class NavigationBarUtils {
      * 3.1 表示全面屏手机，开启了虚拟键盘
      */
     private static boolean hasNavigationBarCompatXiaomi(Context context) {
+        if (isRedmi5()){
+            return hasNavigationBarCommon(context);
+        }
         // mKey = force_fsg_nav_bar，  mIntValue = 0{经典导航键，虚拟键盘}  mIntValue = 1{全面屏手势}
         // content://settings/global/force_fsg_nav_bar
         final String navigationGesture = "force_fsg_nav_bar";
@@ -101,20 +105,27 @@ public class NavigationBarUtils {
         return val == navigationGestureOff;
     }
 
+    /**
+     * 判断是否为红米手机
+     */
+    private static boolean isRedmi5() {
+        return TextUtils.equals(android.os.Build.MODEL,"Redmi 5 Plus");
+    }
+
 
     private static boolean hasNavigationBarCompactHuawei(Context context) {
         // mKey = secure_gesture_navigation  mIntValue = 0{屏幕内三键导航}     mIntValue = 1{全面屏手势 手势导航}
-        // mKey = navigationbar_is_min mIntValue = 0 {屏幕内三键导航模式下导航键可隐藏} mIntValue = 1{屏幕内三键导航模式下导航键不隐藏}
+        // mKey = navigationbar_is_min mIntValue = 0 {屏幕内三键导航模式开启} mIntValue = 1{屏幕内三键导航模式关闭，全面屏手势 手势导航}
         // 华为手机开启屏幕内三键导航之后，还可开启导航条的迷你模式
         //content://settings/secure/secure_gesture_navigation
         //content://settings/global/navigationbar_is_min
         final String navigationGesture = "secure_gesture_navigation";
         final String navigationBarIsMIn = "navigationbar_is_min";
         final int navigationGestureOff = 0;
-        final int navigationBarMInOpen = 1;
+        final int navigationBarMinOpen = 0;
         int val = Settings.Secure.getInt(context.getContentResolver(), navigationGesture, navigationGestureOff);
         int valMin = Settings.Global.getInt(context.getContentResolver(), navigationBarIsMIn, 0);
-        return val == navigationGestureOff && valMin == navigationBarMInOpen;
+        return val == navigationGestureOff && valMin == navigationBarMinOpen;
 
 
     }
@@ -122,7 +133,7 @@ public class NavigationBarUtils {
     /**
      * 开启全屏手势后，二外的手势提示高度
      * 目前只有三星手机增加了手势提示高度，其他机型默认为0
-     * @param context   上下文
+     valMin     * @param context   上下文
      * @return  手势提示高度值
      */
     public static int getNavigationBarGestureTipHeight(Context context){
