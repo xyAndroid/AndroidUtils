@@ -1,1 +1,4 @@
 include ':app', ':lib_android_utils', ':lib_floatwindow'
+include ':lib_simple_router'
+include ':lib_common'
+include ':module_test'

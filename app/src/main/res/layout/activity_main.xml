@@ -6,20 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_open_float"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="打开悬浮窗"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/tv_screen_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_open_float" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/app_name"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

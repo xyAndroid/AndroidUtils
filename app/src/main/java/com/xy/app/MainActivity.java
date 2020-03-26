@@ -1,41 +1,22 @@
 package com.xy.app;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.xy.lib.utils.ScreenInfoUtils;
+import com.xy.lib_common.router.RouterReDefine;
+import com.xy.simplerouter.SimpleRouter;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
     Button btnOpenFloat;
     private TextView tvScreenInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_test);
 
-        initView();
-    }
-
-    public void initView(){
-        tvScreenInfo = findViewById(R.id.tv_screen_info);
-        btnOpenFloat = findViewById(R.id.btn_open_float);
-        btnOpenFloat.setOnClickListener(this);
-
-        tvScreenInfo.setText(ScreenInfoUtils.getScreenInfo(this));
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btn_open_float:
-                Intent intent = new Intent(this,FloatActivity.class);
-                startActivity(intent);
-                break;
-        }
+        SimpleRouter.getInstance().startActivity(RouterReDefine.TEST_ACTIVITY);
     }
 }

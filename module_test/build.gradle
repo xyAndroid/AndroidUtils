@@ -1,0 +1,32 @@
+if (isModule.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+
+android {
+    sourceSets {
+        main {
+            if (isModule.toBoolean()) {
+                manifest.srcFile 'src/main/java/debug/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                //集成开发模式下排除debug文件夹中的所有Java文件
+                java {
+                    exclude 'debug/**'
+                }
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation project(path: ':lib_common')
+}

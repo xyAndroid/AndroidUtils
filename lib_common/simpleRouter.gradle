@@ -1,0 +1,50 @@
+///////////////////////////////////////////////////////////////////////
+// 加速SimpleRouter的初始化：在编译前，将@SimpleRouter的信息保存成文件
+import groovy.io.FileType
+
+task createSimpleRouterMembersFile {
+
+    def strSimpleMembers = "package com.xy.simplerouter;\n" +
+            "\n" +
+            "public class SimpleRouterMembers {\n" +
+            "    static String[] list = {\n"
+
+    def dir = new File('.')
+    dir.traverse(type:FileType.FILES, nameFilter:~/.*\.java/ ) {
+        def path = it.getPath()
+        def srcPath = ("@src@main@java@com@xy").replace("@", File.separator)
+        def srcStart = path.indexOf(srcPath)
+        def keyPath = ("@src@main@java@").replace("@", File.separator)
+        def keyLen = keyPath.length()
+        def modulePath = (".@module_").replace("@", File.separator)
+
+        if (path.indexOf(modulePath) != -1 && srcStart != -1) {
+            File file = new File(path)
+            //防止溢出：一行一行读取
+            def bFind = false
+            file.eachLine {
+                if (it.contains("@SimpleRouterClassRegister")) {
+                    bFind = true
+                }
+            }
+
+            if (bFind) {
+                def clzName = path.substring(srcStart + keyLen)
+                clzName = clzName.replace(File.separator, ".")
+                clzName = clzName.replace(".java", "")
+                strSimpleMembers += "            \"" + clzName + "\",\n"
+            }
+        }
+    }
+
+    strSimpleMembers += "    };\n" + "}"
+
+    File file = file('..\\lib_simple_router\\src\\main\\java\\com\\xy\\simplerouter\\SimpleRouterMembers.java')
+    file.delete()
+    file.write(strSimpleMembers)
+    file.createNewFile()
+}
+
+//编译前调用，这里的preBuild是build任务已有的，使这个任务依赖createSimpleRouterMembersFile，这样在执行preBuild前就会先执行createSimpleRouterMembersFile
+preBuild.dependsOn createSimpleRouterMembersFile
+//end

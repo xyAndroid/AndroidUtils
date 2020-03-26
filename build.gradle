@@ -21,6 +21,36 @@ allprojects {
         jcenter()
         
     }
+
+    subprojects {
+        afterEvaluate { project ->
+            if (project.hasProperty("android")) {
+                android {
+                    compileSdkVersion rootProject.ext.compileSdkVersion
+                    buildToolsVersion rootProject.ext.buildToolsVersion
+                    defaultConfig {
+                        minSdkVersion rootProject.ext.minSdkVersion
+                        targetSdkVersion rootProject.ext.targetSdkVersion
+                        manifestPlaceholders = rootProject.ext.manifestPlaceholders
+                    }
+                    compileOptions {
+                        sourceCompatibility JavaVersion.VERSION_1_8
+                        targetCompatibility JavaVersion.VERSION_1_8
+                    }
+//                    buildTypes {
+//                        release {
+//                            minifyEnabled false
+//                            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//                            buildConfigField "String", "PUBLISH_ENV", "\"$publishEnv\""
+//                        }
+//                        debug {
+//                            buildConfigField "String", "PUBLISH_ENV", "\"$publishEnv\""
+//                        }
+//                    }
+                }
+            }
+        }
+    }
 }
 
 task clean(type: Delete) {
