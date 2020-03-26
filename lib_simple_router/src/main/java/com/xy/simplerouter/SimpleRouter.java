@@ -3,7 +3,7 @@ package com.xy.simplerouter;
 import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.widget.Toast;
 
 import java.io.IOException;

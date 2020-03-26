@@ -6,7 +6,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.PointF;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
