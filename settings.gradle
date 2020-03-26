@@ -1,1 +1,1 @@
-include ':app', ':androidUtilsLib',':floatwindow'
+include ':app', ':lib_android_utils', ':lib_floatwindow'
