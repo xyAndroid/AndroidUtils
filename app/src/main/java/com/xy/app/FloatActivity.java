@@ -14,7 +14,7 @@ import android.view.animation.BounceInterpolator;
 import android.widget.TextView;
 
 import com.xy.lib.utils.ConvertUtils;
-import com.xy.lib.utils.ScreenUtils;
+import com.xy.lib.utils.ScreenInfoUtils;
 import com.yhao.floatwindow.FloatWindow;
 import com.yhao.floatwindow.IFloatWindow;
 import com.yhao.floatwindow.MoveType;
@@ -128,10 +128,10 @@ public class FloatActivity extends Activity {
         cancelSize2 = ConvertUtils.dp2px(this,252);
         buttonSize = ConvertUtils.dp2px(this,58);
 //        int realHeight = ScreenUtils.getScreenHeight(getApplicationContext());
-        int width = ScreenUtils.getScreenWidth(getApplicationContext());
-        int height = ScreenUtils.getScreenHeight(getApplicationContext());
-        int navigationHeight = ScreenUtils.getNavigationBarHeight(this);
-        int statusbarHeight = ScreenUtils.getStatusBarHeight(this);
+        int width = ScreenInfoUtils.getScreenWidth(getApplicationContext());
+        int height = ScreenInfoUtils.getScreenHeight(getApplicationContext());
+        int navigationHeight = ScreenInfoUtils.getNavigationBarHeight(this);
+        int statusbarHeight = ScreenInfoUtils.getStatusBarHeight(this);
 //        boolean flag = realHeight == (height + navigationHeight + statusbarHeight);
 //        int contentHeight = flag ? height : (height - statusbarHeight);
         int contentHeight = height - statusbarHeight;

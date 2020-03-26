@@ -18,7 +18,6 @@
 package com.xy.lib.utils;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
@@ -186,24 +185,8 @@ public class KeyboardHeightProvider extends PopupWindow {
         }
     }
 
-    private int getScreenHeight(Context context) {
-        int realHeight = ScreenUtils.getRealHeight(context);
-
-        if (realHeight == ScreenUtils.getScreenHeight(context) + ScreenUtils.getNavigationBarHeight(context)) {
-            return NavigationBarUtils.hasNavigationBarCompat(context) ? ScreenUtils.getScreenHeight(context) : ScreenUtils.getScreenHeight(context) + ScreenUtils.getNavigationBarHeight(context);
-        } else if (realHeight == ScreenUtils.getScreenHeight(context) + ScreenUtils.getNavigationBarHeight(context) + ScreenUtils.getStatusBarHeight(context)) {
-            return NavigationBarUtils.hasNavigationBarCompat(context) ? ScreenUtils.getScreenHeight(context) + ScreenUtils.getStatusBarHeight(context) : ScreenUtils.getScreenHeight(context) + ScreenUtils.getNavigationBarHeight(context) + ScreenUtils.getStatusBarHeight(context);
-        } else if (realHeight == ScreenUtils.getScreenHeight(context)) {
-            return NavigationBarUtils.hasNavigationBarCompat(context) ? ScreenUtils.getScreenHeight(context) - ScreenUtils.getNavigationBarHeight(context) : ScreenUtils.getScreenHeight(context);
-        } else if(realHeight == ScreenUtils.getRealHeightNotContainNavigationBar((Activity) context) + ScreenUtils.getNavigationBarHeight(context)){
-            return  NavigationBarUtils.hasNavigationBarCompat(context) ? ScreenUtils.getRealHeightNotContainNavigationBar((Activity) context) : realHeight;
-        } else {
-            return realHeight;
-        }
-    }
-
     private int getKeyboardHeight(){
-        int screenHeight = getScreenHeight(activity);
+        int screenHeight = ScreenHeightUtils.getScreenHeight(activity);
         Rect rect = new Rect();
         popupView.getWindowVisibleDisplayFrame(rect);
         int keyboardHeight = screenHeight - rect.bottom;

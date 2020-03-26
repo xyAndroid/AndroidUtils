@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.xy.lib.utils.ScreenUtils;
+import com.xy.lib.utils.ScreenInfoUtils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnOpenFloat;
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnOpenFloat = findViewById(R.id.btn_open_float);
         btnOpenFloat.setOnClickListener(this);
 
-        tvScreenInfo.setText(ScreenUtils.getScreenInfo(this));
+        tvScreenInfo.setText(ScreenInfoUtils.getScreenInfo(this));
     }
 
     @Override

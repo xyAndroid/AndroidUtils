@@ -41,13 +41,13 @@ public class NavigationBarUtils {
      * 判断NavigationBar是否显示（一般方法）
      */
     private static boolean hasNavigationBarCommon(Context context) {
-        if (ScreenUtils.getOrientation(context) == 1) {
-            int distance = ScreenUtils.getRealHeight(context) - ScreenUtils.getScreenHeight(context);
+        if (ScreenInfoUtils.getOrientation(context) == 1) {
+            int distance = ScreenInfoUtils.getRealHeight(context) - ScreenInfoUtils.getScreenHeight(context);
             //portrait
-            return distance > 0 && distance != ScreenUtils.getStatusBarHeight(context);
+            return distance > 0 && distance != ScreenInfoUtils.getStatusBarHeight(context);
         } else {
             //landscape
-            return (ScreenUtils.getRealWidth(context) - ScreenUtils.getScreenWidth(context)) > 0;
+            return (ScreenInfoUtils.getRealWidth(context) - ScreenInfoUtils.getScreenWidth(context)) > 0;
         }
     }
 

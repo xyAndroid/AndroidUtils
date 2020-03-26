@@ -16,7 +16,7 @@ px2sp  ：px转sp
 ```
 
 
-### [about ScreenUtils](./androidUtilsLib/src/main/java/com/xy/lib/utils/ScreenUtils.java)
+### [about ScreenInfoUtils](./androidUtilsLib/src/main/java/com/xy/lib/utils/ScreenInfoUtils.java)
 ```
 getRealHeight                          ：获取屏幕高度（不同的手机效果不一样，有的手机会改高度由状态栏、虚拟键盘高度、屏幕高度组成，有的手机由状态栏、屏幕高度组成）
 getRealWidth                           ：获取屏幕宽度
@@ -29,6 +29,11 @@ getRealHeightNotContainNavigationBar   ：获取除了虚拟键盘之后的窗�
 getActionBarHeight                     ：获取ActionBar高度
 getDpi                                 ：获取像素密度dpi
 getDensity                             ：获取密度density  density = dpi / 160
+```
+
+### [about ScreenHeightUtils](./androidUtilsLib/src/main/java/com/xy/lib/utils/ScreenHeightUtils.java)
+```
+getScreenHeight    ：获取屏幕高度（适配各机型）
 ```
 
 ### [about NavigationBarUtils](./androidUtilsLib/src/main/java/com/xy/lib/utils/NavigationBarUtils.java)

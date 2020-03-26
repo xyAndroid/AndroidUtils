@@ -11,7 +11,7 @@ import android.util.TypedValue;
 import android.view.Display;
 import android.view.WindowManager;
 
-public class ScreenUtils {
+public class ScreenInfoUtils {
 
     /**
      * Get Orientation
