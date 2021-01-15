@@ -6,23 +6,23 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import com.xy.lib.utils.ManufacturerInfoUtils;
+import com.xy.lib.utils.XManufacturerInfoUtils;
 
 
 /**
  * @author wangjing on 2019/5/7 0007
  * description:
  */
-public class BadgeUtil {
+public class XBadgeUtil {
 
     private static final BadgeManager BADGE_MANGER;
 
     static {
-        if (ManufacturerInfoUtils.isHuawei()) {
+        if (XManufacturerInfoUtils.isHuawei()) {
             BADGE_MANGER = new BadgeManagerHuaWei();
-        } else if (ManufacturerInfoUtils.isXiaomi()) {
+        } else if (XManufacturerInfoUtils.isXiaomi()) {
             BADGE_MANGER = new BadgeManagerXiaoMi();
-        } else if (ManufacturerInfoUtils.isSamsung()) {
+        } else if (XManufacturerInfoUtils.isSamsung()) {
             BADGE_MANGER = new BadgeManagerSamsung();
         } else {
             BADGE_MANGER = new BadgeManagerDefault();

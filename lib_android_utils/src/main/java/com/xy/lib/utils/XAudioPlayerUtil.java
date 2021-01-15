@@ -13,7 +13,7 @@ import java.lang.ref.WeakReference;
  * create by XieYan on 2019/4/24
  * description:
  */
-public class AudioPlayerUtil {
+public class XAudioPlayerUtil {
     private static final String TAG = "AudioPlayerUtil";
 
     private MediaPlayer mPlayer;
@@ -24,7 +24,7 @@ public class AudioPlayerUtil {
     private OnAudioFocusChangeListener audioFocusChangeListener;
 
 
-    public AudioPlayerUtil(Context context,OnAudioPlayListener audioPlayListener) {
+    public XAudioPlayerUtil(Context context, OnAudioPlayListener audioPlayListener) {
         this.audioPlayListener = audioPlayListener;
         mHandler = new MyHandler(this);
         if (audioManager == null){
@@ -236,18 +236,18 @@ public class AudioPlayerUtil {
     }
 
     public static class MyHandler extends Handler {
-        WeakReference<AudioPlayerUtil> mWeakReference;
+        WeakReference<XAudioPlayerUtil> mWeakReference;
 
         public static final int CODE_START_PLAY = 0;
         long mIntervalTime = 500L;
 
-        public MyHandler(AudioPlayerUtil audioPlayerUtil) {
+        public MyHandler(XAudioPlayerUtil audioPlayerUtil) {
             mWeakReference = new WeakReference<>(audioPlayerUtil);
         }
 
         @Override
         public void handleMessage(Message msg) {
-            AudioPlayerUtil audioPlayerUtil = mWeakReference.get();
+            XAudioPlayerUtil audioPlayerUtil = mWeakReference.get();
             if (audioPlayerUtil != null) {
                 switch (msg.what) {
                     case CODE_START_PLAY:

@@ -35,7 +35,7 @@ import com.xy.lib.R;
  * The keyboard height provider, this class uses a PopupWindow
  * to calculate the window height when the floating keyboard is opened and closed.
  */
-public class KeyboardHeightProvider extends PopupWindow {
+public class XKeyboardHeightProvider extends PopupWindow {
 
     /**
      * The tag for logging purposes
@@ -77,7 +77,7 @@ public class KeyboardHeightProvider extends PopupWindow {
      *
      * @param activity The parent activity
      */
-    public KeyboardHeightProvider(Activity activity) {
+    public XKeyboardHeightProvider(Activity activity) {
         super(activity);
         this.activity = activity;
 
@@ -186,13 +186,13 @@ public class KeyboardHeightProvider extends PopupWindow {
     }
 
     private int getKeyboardHeight(){
-        int screenHeight = ScreenHeightUtils.getScreenHeight(activity);
+        int screenHeight = XScreenHeightUtils.getScreenHeight(activity);
         Rect rect = new Rect();
         popupView.getWindowVisibleDisplayFrame(rect);
         int keyboardHeight = screenHeight - rect.bottom;
 
-        if (!NavigationBarUtils.hasNavigationBarCompat(activity)){
-            keyboardHeight -= NavigationBarUtils.getNavigationBarGestureTipHeight(activity);
+        if (!XNavigationBarUtils.hasNavigationBarCompat(activity)){
+            keyboardHeight -= XNavigationBarUtils.getNavigationBarGestureTipHeight(activity);
         }
         return keyboardHeight;
     }

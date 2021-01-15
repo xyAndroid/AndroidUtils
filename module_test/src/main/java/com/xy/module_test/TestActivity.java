@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.xy.lib.utils.ScreenInfoUtils;
+import com.xy.lib.utils.XScreenInfoUtils;
 import com.xy.lib_common.router.RouterReDefine;
 import com.xy.simplerouter.SimpleRouterClassRegister;
 import com.xy.simplerouter.SimpleRouterObj;
@@ -31,7 +31,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         btnOpenFloat = findViewById(R.id.btn_open_float);
         btnOpenFloat.setOnClickListener(this);
 
-        tvScreenInfo.setText(ScreenInfoUtils.getScreenInfo(this));
+        tvScreenInfo.setText(XScreenInfoUtils.getScreenInfo(this));
     }
 
     @Override

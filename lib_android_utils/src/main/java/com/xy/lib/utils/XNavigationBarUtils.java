@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.provider.Settings;
 import android.text.TextUtils;
 
-
 /**
  * 判断是否有NavigationBar显示
  * <p>
@@ -18,19 +17,19 @@ import android.text.TextUtils;
  * @author yh
  * @date 2019/1/9
  */
-public class NavigationBarUtils {
+public class XNavigationBarUtils {
 
     /**
      * 判断NavigationBar是否显示
      */
     public static boolean hasNavigationBarCompat(Context context) {
-        if (ManufacturerInfoUtils.isVivo()) {
+        if (XManufacturerInfoUtils.isVivo()) {
             return hasNavigationBarCompatVivo(context);
-        } else if (ManufacturerInfoUtils.isXiaomi()) {
+        } else if (XManufacturerInfoUtils.isXiaomi()) {
             return hasNavigationBarCompatXiaomi(context);
-        } else if (ManufacturerInfoUtils.isSamsung()) {
+        } else if (XManufacturerInfoUtils.isSamsung()) {
             return hasNavigationBarCompatSumsung(context);
-        } else if (ManufacturerInfoUtils.isHuawei()) {
+        } else if (XManufacturerInfoUtils.isHuawei()) {
             return hasNavigationBarCompactHuawei(context);
         } else {
             return hasNavigationBarCommon(context);
@@ -42,13 +41,13 @@ public class NavigationBarUtils {
      * 判断NavigationBar是否显示（一般方法）
      */
     private static boolean hasNavigationBarCommon(Context context) {
-        if (ScreenInfoUtils.getOrientation(context) == 1) {
-            int distance = ScreenInfoUtils.getRealHeight(context) - ScreenInfoUtils.getScreenHeight(context);
+        if (XScreenInfoUtils.getOrientation(context) == 1) {
+            int distance = XScreenInfoUtils.getRealHeight(context) - XScreenInfoUtils.getScreenHeight(context);
             //portrait
-            return distance > 0 && distance != ScreenInfoUtils.getStatusBarHeight(context);
+            return distance > 0 && distance != XScreenInfoUtils.getStatusBarHeight(context);
         } else {
             //landscape
-            return (ScreenInfoUtils.getRealWidth(context) - ScreenInfoUtils.getScreenWidth(context)) > 0;
+            return (XScreenInfoUtils.getRealWidth(context) - XScreenInfoUtils.getScreenWidth(context)) > 0;
         }
     }
 
@@ -71,7 +70,7 @@ public class NavigationBarUtils {
         // content://settings/global/navigation_bar_gesture_while_hidden
         final String navigationGesture = "navigation_bar_gesture_while_hidden";
         final int navigationGestureOff = 0;
-        int val = Settings.Global.getInt(context.getContentResolver(), navigationGesture, -10000);
+        int val = Settings.Global.getInt(context.getContentResolver(), navigationGesture, navigationGestureOff);
         return val == navigationGestureOff;
     }
 
@@ -137,7 +136,7 @@ public class NavigationBarUtils {
      * @return  手势提示高度值
      */
     public static int getNavigationBarGestureTipHeight(Context context){
-        if (ManufacturerInfoUtils.isSamsung()){
+        if (XManufacturerInfoUtils.isSamsung()){
             if (hasNavigationBarCompactSumsungGestureTip(context)){
                 return getNavigationBarGestureTipHeightCompactSumsung(context);
             }else {

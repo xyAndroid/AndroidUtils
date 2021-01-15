@@ -13,8 +13,8 @@ import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.widget.TextView;
 
-import com.xy.lib.utils.ConvertUtils;
-import com.xy.lib.utils.ScreenInfoUtils;
+import com.xy.lib.utils.XConvertUtils;
+import com.xy.lib.utils.XScreenInfoUtils;
 import com.yhao.floatwindow.FloatWindow;
 import com.yhao.floatwindow.IFloatWindow;
 import com.yhao.floatwindow.MoveType;
@@ -124,14 +124,14 @@ public class FloatActivity extends Activity {
     }
 
     private void initSize() {
-        cancelSize = ConvertUtils.dp2px(this,230);
-        cancelSize2 = ConvertUtils.dp2px(this,252);
-        buttonSize = ConvertUtils.dp2px(this,58);
+        cancelSize = XConvertUtils.dp2px(230);
+        cancelSize2 = XConvertUtils.dp2px(252);
+        buttonSize = XConvertUtils.dp2px(58);
 //        int realHeight = ScreenUtils.getScreenHeight(getApplicationContext());
-        int width = ScreenInfoUtils.getScreenWidth(getApplicationContext());
-        int height = ScreenInfoUtils.getScreenHeight(getApplicationContext());
-        int navigationHeight = ScreenInfoUtils.getNavigationBarHeight(this);
-        int statusbarHeight = ScreenInfoUtils.getStatusBarHeight(this);
+        int width = XScreenInfoUtils.getScreenWidth(getApplicationContext());
+        int height = XScreenInfoUtils.getScreenHeight(getApplicationContext());
+        int navigationHeight = XScreenInfoUtils.getNavigationBarHeight(this);
+        int statusbarHeight = XScreenInfoUtils.getStatusBarHeight(this);
 //        boolean flag = realHeight == (height + navigationHeight + statusbarHeight);
 //        int contentHeight = flag ? height : (height - statusbarHeight);
         int contentHeight = height - statusbarHeight;
